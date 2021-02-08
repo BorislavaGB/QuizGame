@@ -22,7 +22,6 @@ public class Main {
                 "Indonesia was a colonized by which of the following empires?\n" + "1. Dutch\n2. American\n3. Chinese\n4. Indonesian",
                 "Who was the first democratically elected President of South Africa?\n" + "1. Bob Marley\n2. Nelson Mandela\n3. Barak Obama\n4. Cyril Ramaphosa"
 
-
         };
         String[] languageQuestions = {
                 "What does the Latin phrase \"Pro Bono\" mean?\n" + "1. Stipendiary\n2. Paid\n3. Free\n4. None of the above",
@@ -72,12 +71,12 @@ public class Main {
         };
     }
 
-    public static void printGeoQuestions(Question[] geoAnswers, int score) {
+    public static void printQuestions(Question[] Answers, int score) {
         Scanner userInput = new Scanner(System.in);
-        for (int i = 0; i < geoAnswers.length; i++) {
-            System.out.println(geoAnswers[i].ques);
+        for (int i = 0; i < Answers.length; i++) {
+            System.out.println(Answers[i].ques);
             String userAnswer = userInput.nextLine();
-            if (userAnswer.equals(geoAnswers[i].answer)) {
+            if (userAnswer.equals(Answers[i].ans)) {
                 score++;
             } else {
                 System.out.println("Game over!");
@@ -87,70 +86,15 @@ public class Main {
         printScore(score);
     }
 
-    public static void printPeopleAndPlacesQuestions(Question[] peopleAndPlacesAnswers, int score) {
-        Scanner userInput = new Scanner(System.in);
-        for (int i = 0; i < peopleAndPlacesAnswers.length; i++) {
-            System.out.println(peopleAndPlacesAnswers[i].ques);
-            String userAnswer = userInput.nextLine();
-            if (userAnswer.equals(peopleAndPlacesAnswers[i].answer)) {
-                score++;
-            } else {
-                System.out.println("Game over!");
-                break;
-            }
-        }
-        printScore(score);
-    }
-
-    public static void printLanguageQuestions(Question[] languageAnswers, int score) {
-        Scanner userInput = new Scanner(System.in);
-        for (int i = 0; i < languageAnswers.length; i++) {
-            System.out.println(languageAnswers[i].ques);
-            String userAnswer = userInput.nextLine();
-            if (userAnswer.equals(languageAnswers[i].answer)) {
-                score++;
-            } else {
-                System.out.println("Game over!");
-                break;
-            }
-        }
-        printScore(score);
-    }
-
-    public static void shuffleGeoArray(Question[] geoAnswers) {
+    public static void shuffleQuestions(Question[] Answers) {
         int index;
         Question temp;
         Random random = new Random();
-        for (int i = geoAnswers.length - 1; i > 0; i--) {
+        for (int i = Answers.length - 1; i > 0; i--) {
             index = random.nextInt(i + 1);
-            temp = geoAnswers[index];
-            geoAnswers[index] = geoAnswers[i];
-            geoAnswers[i] = temp;
-        }
-
-    }
-
-    public static void shufflePeopleAndPlacesArray(Question[] peopleAndPlacesAnswers) {
-        int index;
-        Question temp;
-        Random random = new Random();
-        for (int i = peopleAndPlacesAnswers.length - 1; i > 0; i--) {
-            index = random.nextInt(i + 1);
-            temp = peopleAndPlacesAnswers[index];
-            peopleAndPlacesAnswers[index] = peopleAndPlacesAnswers[i];
-            peopleAndPlacesAnswers[i] = temp;
-        }
-    }
-
-    public static void shuffleLanguageArray(Question[] languageAnswers) {
-        int index;
-        Question temp;
-        Random random = new Random();
-        for (int i = languageAnswers.length - 1; i > 0; i--) {
-            index = random.nextInt(i + 1);
-            temp = languageAnswers[index];
-            languageAnswers[index] = languageAnswers[i];
-            languageAnswers[i] = temp;
+            temp = Answers[index];
+            Answers[index] = Answers[i];
+            Answers[i] = temp;
         }
 
     }
@@ -170,24 +114,24 @@ public class Main {
         String categoryNum = userInput.nextLine();
         int score = 0;
 
-    switch (categoryNum) {
-        case "1" -> {
-            shuffleGeoArray(geoAnswers);
-            printGeoQuestions(geoAnswers, score);
-        }
-        case "2" -> {
-            shufflePeopleAndPlacesArray(peopleAndPlacesAnswers);
-            printPeopleAndPlacesQuestions(peopleAndPlacesAnswers, score);
-        }
-        case "3" -> {
-            shuffleLanguageArray(languageAnswers);
-            printLanguageQuestions(languageAnswers, score);
+        switch (categoryNum) {
+            case "1" -> {
+                shuffleQuestions(geoAnswers);
+                printQuestions(geoAnswers, score);
+            }
+            case "2" -> {
+                shuffleQuestions(peopleAndPlacesAnswers);
+                printQuestions(peopleAndPlacesAnswers, score);
+            }
+            case "3" -> {
+                shuffleQuestions(languageAnswers);
+                printQuestions(languageAnswers, score);
 
+            }
         }
+        printCategory(categoryNum);
     }
-    printCategory(categoryNum);
 }
-    }
 
 
 

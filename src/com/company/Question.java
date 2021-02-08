@@ -2,9 +2,11 @@ package com.company;
 
 public class Question {
     String ques;
-    String answer;
-     public Question (String ques, String answer){
-         this.ques = ques;
-         this.answer = answer;
+    String ans;
+     public Question (String question, String answer){
+         this.ques = question;
+         this.ans = answer;
      }
 }
+
+
