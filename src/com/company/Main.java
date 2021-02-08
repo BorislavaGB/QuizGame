@@ -71,12 +71,12 @@ public class Main {
         };
     }
 
-    public static void printQuestions(Question[] Answers, int score) {
+    public static void printQuestions(Question[] answers, int score) {
         Scanner userInput = new Scanner(System.in);
-        for (int i = 0; i < Answers.length; i++) {
-            System.out.println(Answers[i].ques);
+        for (int i = 0; i < answers.length; i++) {
+            System.out.println(answers[i].ques);
             String userAnswer = userInput.nextLine();
-            if (userAnswer.equals(Answers[i].ans)) {
+            if (userAnswer.equals(answers[i].ans)) {
                 score++;
             } else {
                 System.out.println("Game over!");
@@ -86,17 +86,17 @@ public class Main {
         printScore(score);
     }
 
-    public static void shuffleQuestions(Question[] Answers) {
+    public static void shuffleQuestions(Question[] answers) {
         int index;
         Question temp;
         Random random = new Random();
-        for (int i = Answers.length - 1; i > 0; i--) {
+        for (int i = answers.length - 1; i > 0; i--) {
             index = random.nextInt(i + 1);
-            temp = Answers[index];
-            Answers[index] = Answers[i];
-            Answers[i] = temp;
-        }
+            temp = answers[index];
+            answers[index] = answers[i];
+            answers[i] = temp;
 
+        }
     }
 
     public static void printCategory(String categoryNum) {
